@@ -1,3 +1,5 @@
-const { PORT } = process.env;
+require('dotenv').config();
 
-module.exports = { PORT };
+const { PORT, DB_URI } = process.env;
+
+module.exports = { PORT, DB_URI };

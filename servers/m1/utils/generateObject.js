@@ -20,13 +20,13 @@ const generateValueAccordingToItsType = (type, rootKeyCount, maxDepth, currentDe
     case 'array':
       return [];
     default:
-      if (currentDepth === maxDepth) return {};
-
-      return generateObject(Math.floor(rootKeyCount / 2), maxDepth - 1, currentDepth + 1);
+      return (currentDepth < maxDepth)
+        ? generateObject(Math.floor(rootKeyCount / 2), maxDepth - 1, currentDepth + 1)
+        : {};
   }
 };
 
-const generateObject = (rootKeyCount, maxDepth, currentDepth = 1) => {
+const generateObject = (rootKeyCount, maxDepth, currentDepth = 0) => {
   const object = {};
   for (let i = 0; i < rootKeyCount; i++) {
     object[randomString()] = generateValueAccordingToItsType(randomElementFromArray(), rootKeyCount, maxDepth, currentDepth);
