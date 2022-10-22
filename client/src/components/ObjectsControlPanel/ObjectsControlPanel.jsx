@@ -35,7 +35,7 @@ function ObjectsControlPanel({ objectsRef }) {
       <div className="container">
         <TextField
           className="input"
-          label="Depth"
+          label="Max Depth"
           type="number"
           value={depth}
           error={depth < 1}

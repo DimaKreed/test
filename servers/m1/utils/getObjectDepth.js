@@ -1,10 +1,10 @@
-const getObjectDepth = (object) => {
-  let level = 0;
+const getObjectDepth = (object, initialLevel = 0) => {
+  let level = initialLevel;
   // eslint-disable-next-line no-restricted-syntax
   for (const key in object) {
     if (typeof object[key] === 'object' && !Array.isArray(object[key])) {
-      const depth = getObjectDepth(object[key]) + 1;
-      level = Math.max(depth, level);
+      level += 1;
+      getObjectDepth(object[key], level);
     }
   }
   return level;
